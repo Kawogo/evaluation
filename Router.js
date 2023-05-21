@@ -1,23 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { AuthContext } from './context/AuthContext'
 import { AppStack } from './stacks/AppStack'
 import { AuthStack } from './stacks/AuthStack'
-import { QuestionsContext } from './context/QuestionsContext'
+import {useSelector} from "react-redux";
 
 
 const Router = () => {
-  const {authToken, studentInfo} = useContext(AuthContext)
-  const {fetchQuestionsDetails} = useContext(QuestionsContext)
+  const authToken = useSelector((state) => state.auth.authToken);
+  const studentInfo = useSelector((state) => state.auth.studentInfo);
 
-
-  useEffect(()=>{
-    if (authToken) {
-      fetchQuestionsDetails(studentInfo)  
-    }
-    console.log('useeffect of router');
-  },[authToken])
-  
+  console.log(studentInfo)
 
   return (
     <NavigationContainer>

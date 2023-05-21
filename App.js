@@ -1,15 +1,13 @@
 import React from "react";
+import { Provider } from 'react-redux';
+import store from './context/store';
 import Router from "./Router";
-import { AuthContextProvider } from "./context/AuthContext";
-import { QuestionsContextProvider } from "./context/QuestionsContext";
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <QuestionsContextProvider>
-        <Router/>
-      </QuestionsContextProvider>
-    </AuthContextProvider>
+      <Provider store={store}>
+          <Router />
+      </Provider>
   );
 }
 
