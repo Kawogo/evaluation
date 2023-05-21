@@ -29,6 +29,12 @@ const questionsSlice = createSlice({
         error: null,
     },
     reducers: {
+        setCourse: (state, action) => {
+            state.course = action.payload;
+        },
+        setQuestions: (state, action) => {
+            state.questions = action.payload;
+        },
         resetCourseInfo: (state) => {
             state.course = {};
             state.questions = [];
@@ -52,6 +58,6 @@ const questionsSlice = createSlice({
     },
 });
 
-export const { resetCourseInfo } = questionsSlice.actions;
+export const { resetCourseInfo,setCourse,setQuestions } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
